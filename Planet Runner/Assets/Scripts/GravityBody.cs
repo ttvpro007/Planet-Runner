@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GravityBody : MonoBehaviour
 {
@@ -14,10 +12,14 @@ public class GravityBody : MonoBehaviour
         rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         rigidbody.useGravity = false;
     }
-
-    // Update is called once per frame
+    
     private void Update()
     {
         attractor.Attract(transform);
+    }
+
+    public void SetPlanet(GravityAttractor planet)
+    {
+        attractor = planet;
     }
 }

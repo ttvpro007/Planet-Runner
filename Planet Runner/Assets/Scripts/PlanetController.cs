@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlanetController : MonoBehaviour
 {
     [SerializeField] float radius = 30f;
     [SerializeField] float shrinkingFactor = 0.1f;
 
-    float time = Mathf.Infinity;
+    public float Radius { get { return radius; } }
 
     void Start()
     {
@@ -18,6 +16,6 @@ public class PlanetController : MonoBehaviour
     {
         if (radius < 1) return;
         radius -= shrinkingFactor;
-        transform.localScale = Vector3.one * (radius);
+        transform.localScale = Vector3.one * radius;
     }
 }
