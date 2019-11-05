@@ -3,19 +3,24 @@
 public class GravityAttractor : MonoBehaviour
 {
     [SerializeField] float gravity = -10f;
-    [SerializeField] float smoothFactor = 50f;
-
     public float Gravity { get { return gravity; } }
 
-    public void Attract(Transform body)
+    public static GravityAttractor instance;
+
+    private void Awake()
     {
-        Vector3 up = (body.position - transform.position).normalized;
-        Vector3 localUp = body.up;
+        instance = this;
+    }
 
-        body.GetComponent<Rigidbody>().AddForce(up * gravity);
+    public void Attract(GravityBody body)
+    {
+        body.GetComponent<Rigidbody>().AddForce(body.Up() * gravity);
+        AlignBodyRotation(body);
+    }
 
-        Quaternion rotation = Quaternion.FromToRotation(localUp, up) * body.rotation;
-
-        body.rotation = Quaternion.Slerp(body.rotation, rotation, smoothFactor * Time.deltaTime);
+    private void AlignBodyRotation(GravityBody body)
+    {
+        Quaternion rotation = Quaternion.FromToRotation(body.LocalUp(), body.Up()) * body.transform.rotation;
+        body.transform.rotation = Quaternion.Slerp(body.transform.rotation, rotation, 50f * Time.fixedDeltaTime);
     }
 }
