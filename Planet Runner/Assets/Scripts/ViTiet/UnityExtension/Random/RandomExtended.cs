@@ -27,11 +27,11 @@ namespace ViTiet.UnityExtension.Random
             points[0] = center.right * size.x / 2 + center.position;
             points[1] = center.right * size.x / 2 * -1 + center.position;
             // y axis extreme points
-            points[2] = center.up * size.y / 2 + center.position;
-            points[3] = center.up * size.y / 2 * -1 + center.position;
+            points[2] = center.up * size.z / 2 + center.position;
+            points[3] = center.up * size.z / 2 * -1 + center.position;
             // z axis extreme points
-            points[4] = center.forward * size.z / 2 + center.position;
-            points[5] = center.forward * size.z / 2 * -1 + center.position;
+            points[4] = center.forward * size.y / 2 + center.position;
+            points[5] = center.forward * size.y / 2 * -1 + center.position;
 
             // random x
             float x = UnityEngine.Random.Range(points[0].x, points[1].x);

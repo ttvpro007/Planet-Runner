@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using ViTiet.UnityExtension.Random;
+using ViTiet.UnityExtension.Gizmos;
 
 public class AsteroidSpawner : MonoBehaviour
 {
-    [SerializeField] PlanetController planet;
     [SerializeField] GameObject asteroid;
     [SerializeField] float spawnAreaHeight;
     [SerializeField] float spawnDistanceFromPlanet;
@@ -12,11 +12,20 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField] bool isFollowingPlayer;
     [SerializeField] Vector3 spawnVolume;
 
-    float time = Mathf.Infinity;
+    private GravityAttractor attractor;
+    private PlanetController planet;
 
-    float innerRadius;
-    float outerRadius;
-    float planetRadius;
+    private float time = Mathf.Infinity;
+
+    private float innerRadius;
+    private float outerRadius;
+    private float planetRadius;
+
+    private void Start()
+    {
+        attractor = GravityAttractor.instance;
+        planet = attractor.GetComponent<PlanetController>();
+    }
 
     private void FixedUpdate()
     {
@@ -55,21 +64,19 @@ public class AsteroidSpawner : MonoBehaviour
             }
 
             go = Instantiate(asteroid, randomPosition, Quaternion.identity);
-            go.GetComponent<GravityBody>().SetPlanet(planet.GetComponent<GravityAttractor>());
-            
         }
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (!isFollowingPlayer)
+        if (!isFollowingPlayer && attractor)
         {
-            Gizmos.DrawWireSphere(planet.transform.position, innerRadius);
-            Gizmos.DrawWireSphere(planet.transform.position, outerRadius);
+            Gizmos.DrawWireSphere(attractor.transform.position, innerRadius);
+            Gizmos.DrawWireSphere(attractor.transform.position, outerRadius);
         }
         else
         {
-            Gizmos.DrawWireCube(transform.position, spawnVolume);
+            GizmosExtended.DrawWireCube(transform, spawnVolume, Color.white);
         }
     }
 }

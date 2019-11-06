@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using ViTiet.Generic;
 using ViTiet.UnityExtension.Math;
 using Plane = ViTiet.UnityExtension.Math.Plane;
@@ -90,7 +91,78 @@ namespace ViTiet.UnityExtension.Gizmos
                 UnityEngine.Gizmos.DrawLine(points[i], points[i + 4]);
             }
         }
-        
+
+        /// <summary>
+        /// Draws a cube/rectangle box
+        /// </summary>
+        public static void DrawWireCube(Transform center, Vector3 size, Color color)
+        {
+            UnityEngine.Gizmos.color = color;
+            Vector3[] scaledDirectionalVectors = new Vector3[5];
+            Vector3[] cornerDirectionalVectors = new Vector3[4];
+            Vector3[] points = new Vector3[8];
+
+            // x axis scaled directional vectors (right/left)
+            scaledDirectionalVectors[0] = center.right * size.x / 2;
+            scaledDirectionalVectors[1] = center.right * size.x / 2 * -1;
+            // y axis scaled directional vectors (up/down)
+            scaledDirectionalVectors[2] = center.up * size.z / 2;
+            scaledDirectionalVectors[3] = center.up * size.z / 2 * -1;
+            // z axis scaled forward directional vector (forward)
+            scaledDirectionalVectors[4] = center.forward * size.y / 2;
+
+            // generate corner directional vectors for front plane
+            // left up foward vector
+            cornerDirectionalVectors[0] = scaledDirectionalVectors[1] + scaledDirectionalVectors[2] + scaledDirectionalVectors[4];
+            // right up forward vector
+            cornerDirectionalVectors[1] = scaledDirectionalVectors[0] + scaledDirectionalVectors[2] + scaledDirectionalVectors[4];
+            // right down forward vector
+            cornerDirectionalVectors[2] = scaledDirectionalVectors[0] + scaledDirectionalVectors[3] + scaledDirectionalVectors[4];
+            // left down forward vector
+            cornerDirectionalVectors[3] = scaledDirectionalVectors[1] + scaledDirectionalVectors[3] + scaledDirectionalVectors[4];
+            
+            // generate front plane points
+            // left up foward point
+            points[4] = VectorExtended.GetDestinationPoint(cornerDirectionalVectors[0], center.position);
+            // right up forward point
+            points[5] = VectorExtended.GetDestinationPoint(cornerDirectionalVectors[1], center.position);
+            // right down forward point
+            points[6] = VectorExtended.GetDestinationPoint(cornerDirectionalVectors[2], center.position);
+            // left down forward point
+            points[7] = VectorExtended.GetDestinationPoint(cornerDirectionalVectors[3], center.position);
+
+            // generate rear plane points
+            for (int i = 0; i < 4; i++)
+            {
+                if (i < 2)
+                {
+                    points[i] = VectorExtended.GetDestinationPoint(cornerDirectionalVectors[i + 2] * -1, center.position);
+                }
+                else
+                {
+                    points[i] = VectorExtended.GetDestinationPoint(cornerDirectionalVectors[i - 2] * -1, center.position);
+                }
+            }
+
+            // draw rear rect
+            for (int i = 0; i < 4; i++)
+            {
+                UnityEngine.Gizmos.DrawLine(points[i], points[LoopLogic.GetNextLoopIndex(i, 0, 4)]);
+            }
+
+            // draw front rect
+            for (int i = 4; i < 8; i++)
+            {
+                UnityEngine.Gizmos.DrawLine(points[i], points[LoopLogic.GetNextLoopIndex(i, 4, 8)]);
+            }
+
+            // connect rear & front rect
+            for (int i = 0; i < 4; i++)
+            {
+                UnityEngine.Gizmos.DrawLine(points[i], points[i + 4]);
+            }
+        }
+
         /// <summary>
         /// Draws a 2D ellipse
         /// </summary>

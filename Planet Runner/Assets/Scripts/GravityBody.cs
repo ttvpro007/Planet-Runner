@@ -30,9 +30,4 @@ public class GravityBody : MonoBehaviour
     {
         return transform.TransformDirection(Vector3.up);
     }
-
-    public void SetPlanet(GravityAttractor planet)
-    {
-        attractor = planet;
-    }
 }

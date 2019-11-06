@@ -87,7 +87,7 @@ namespace ViTiet.UnityExtension.Editor
                     if (!mouseClickedOnColorKey)
                     {
                         // get random color
-                        Color randCor = new Color(Random.value, Random.value, Random.value);
+                        Color randCor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
 
                         // blend factor set at mouse position x
                         float blendFactor = Mathf.InverseLerp(gradientPreviousTexture.x, gradientPreviousTexture.xMax, guiEvent.mousePosition.x);
