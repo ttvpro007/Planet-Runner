@@ -4,9 +4,10 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float speed = 15f;
+    [SerializeField] float startSpeed = 15f;
     [SerializeField] float maxJumpForce = 50f;
     [SerializeField] float turnSpeed = 3f;
+    [SerializeField] float flyTimeLimiter = 5f;
     [SerializeField] UnityEvent jumpEvent = new UnityEvent();
     [SerializeField] UnityEvent landingEvent = new UnityEvent();
 
@@ -22,20 +23,36 @@ public class PlayerController : MonoBehaviour
     private bool isRunning;
     public bool IsRunning { get { return isRunning; } }
 
+    private float speed = 0;
+    private float flyTime = 0;
+    private float groundTime = 0;
+
     private void Start()
     {
         attractor = GravityAttractor.instance;
         rb = GetComponent<Rigidbody>();
+        speed = startSpeed;
     }
 
     private void Update()
     {
         rotation = Input.GetAxis("Horizontal");
 
+        CheckFly();
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && rotation == 0)
         {
             Jump();
         }
+    }
+
+    private void CheckFly()
+    {
+        if (!isGrounded) flyTime += Time.deltaTime;
+        else groundTime += Time.deltaTime;
+
+        if (flyTime >= flyTimeLimiter) attractor.Gravity -= Time.deltaTime;
+        if (groundTime >= flyTimeLimiter) attractor.Gravity = -10;
     }
 
     private void FixedUpdate()
@@ -59,7 +76,8 @@ public class PlayerController : MonoBehaviour
         Vector3 yRotation = Vector3.up * rotation * turnSpeed * Time.fixedDeltaTime;
         Quaternion deltaRotation = Quaternion.Euler(yRotation);
         Quaternion targetRotation = rb.rotation * deltaRotation;
-        rb.transform.rotation = Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 50f);
+        //rb.transform.rotation = Quaternion.Slerp(rb.rotation, targetRotation, 50f * Time.fixedDeltaTime);
+        rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 50f * Time.fixedDeltaTime));
     }
 
     private void Jump()
@@ -80,6 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             landingEvent.Invoke();
+            flyTime = 0;
         }
     }
 
@@ -89,6 +108,7 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
             isRunning = false;
+            groundTime = 0;
         }
     }
 }

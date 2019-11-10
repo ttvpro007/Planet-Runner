@@ -3,22 +3,34 @@
 [RequireComponent(typeof(Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
-    [SerializeField] bool Static;
+    [SerializeField] bool _static;
     private GravityAttractor attractor;
+    public bool Static { get { return _static; } set { _static = value; } }
+
+    Rigidbody rigidbody;
 
     private void Start()
     {
         attractor = GravityAttractor.instance;
 
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        rigidbody = GetComponent<Rigidbody>();
         rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         rigidbody.useGravity = false;
-        if (Static) rigidbody.isKinematic = true;
     }
     
     private void FixedUpdate()
     {
-        if (Static) return;
+        if (_static)
+        {
+            rigidbody.isKinematic = true;
+            gameObject.isStatic = true;
+            return;
+        }
+        else
+        {
+            rigidbody.isKinematic = false;
+            gameObject.isStatic = false;
+        }
 
         attractor.Attract(this);
     }

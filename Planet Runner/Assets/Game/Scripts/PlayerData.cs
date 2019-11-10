@@ -10,7 +10,7 @@ public class PlayerData : MonoBehaviour
     private static PlayerAnimation _playerAnimation;
     public static PlayerAnimation playerAnimation { get { return _playerAnimation; } }
 
-    private void Start()
+    private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
         _playerAnimation = GetComponent<PlayerAnimation>();

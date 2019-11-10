@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 33770819408793478}
   - component: {fileID: 23900576288628364}
   - component: {fileID: 65953744655864512}
+  - component: {fileID: 6116226130828821756}
   - component: {fileID: 6711575276740058803}
   - component: {fileID: 4351555192493009668}
+  - component: {fileID: 3130131900181816852}
   m_Layer: 0
   m_Name: House_5
   m_TagString: Untagged
@@ -91,8 +93,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.9622893, y: 4.249435, z: 5.6193337}
-  m_Center: {x: 0.0000004172325, y: 2.1611307, z: 0.000006198883}
+  m_Size: {x: 3.9622893, y: 4.071899, z: 5.6193337}
+  m_Center: {x: 0.00000047683716, y: 2.2498987, z: 0.000006198883}
+--- !u!65 &6116226130828821756
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637367218074080}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 3, z: 6}
+  m_Center: {x: 0, y: 4, z: 0}
 --- !u!54 &6711575276740058803
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,4 +136,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8930d1ddf02b65c4799caa9a5bf8e222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Static: 1
+  _static: 0
+--- !u!114 &3130131900181816852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637367218074080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f6a3efff658af4cab0891508f0d2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 2
+  piecePrefabs:
+  - {fileID: 1391043265532728, guid: 0876d08b6ad38cf4fa749afbb448e749, type: 3}
+  - {fileID: 1799773386866840, guid: e4418579d498db641b738599aad7e3f4, type: 3}
+  - {fileID: 1956754829211704, guid: 0a51d4c9b1e24f94595c90184fbcde43, type: 3}
+  - {fileID: 1665385087809270, guid: f7b6ce475dad7c94ea940bbd517b61ea, type: 3}

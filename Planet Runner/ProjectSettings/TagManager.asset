@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Planet
   - Road
+  - Asteroid
+  - Debris
   layers:
   - Default
   - TransparentFX

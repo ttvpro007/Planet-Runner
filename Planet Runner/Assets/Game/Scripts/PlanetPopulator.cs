@@ -38,6 +38,7 @@ public class PlanetPopulator : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             body = Instantiate(prefabs[Random.Range(0, prefabs.Length)], GetSpawnPosition(), Quaternion.identity).GetComponent<GravityBody>();
+            body.Static = true;
             AlignBodyRotationToPlanetNormal(body);
         }
     }
