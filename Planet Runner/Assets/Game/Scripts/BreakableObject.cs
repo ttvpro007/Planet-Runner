@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BreakableObject : MonoBehaviour
 {
-    [SerializeField] ObjectType objectType;
+    //[SerializeField] ObjectType type;
     [SerializeField] GameObject[] piecePrefabs;
 
+    //public ObjectType Type { get { return type; } }
     private int piecesToBreak;
 
     void Start()
@@ -47,7 +46,7 @@ public class BreakableObject : MonoBehaviour
 
     private int GetPiecesToBreak()
     {
-        switch (objectType)
+        switch (GetComponent<PlanetObject>().Type)
         {
             case ObjectType.Asteroid:
                 return 5;
@@ -73,9 +72,4 @@ public class BreakableObject : MonoBehaviour
             DestroyBreakableObject();
         }
     }
-}
-
-public enum ObjectType
-{
-    Asteroid, Tree, House
 }

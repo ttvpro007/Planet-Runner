@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator animator;
-    private PlayerController playerController;
+    private PlayerMovement playerMovement;
 
     private float rotation;
     private bool isGrounded;
@@ -14,14 +14,14 @@ public class PlayerAnimation : MonoBehaviour
     private void Start()
     {
         animator = transform.GetComponentInChildren<Animator>();
-        playerController = PlayerData.playerController;
+        playerMovement = PlayerData.playerMovement;
     }
 
     private void Update()
     {
-        rotation = playerController.Rotation;
-        isGrounded = playerController.IsGrounded;
-        isRunning = playerController.IsRunning;
+        rotation = playerMovement.Rotation;
+        isGrounded = playerMovement.IsGrounded;
+        isRunning = playerMovement.IsRunning;
         SetGlobalAnimationParameters();
     }
 

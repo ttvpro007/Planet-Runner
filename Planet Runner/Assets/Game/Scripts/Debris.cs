@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Debris : MonoBehaviour
 {
-    SphereCollider sphereCollider;
+    [SerializeField] float damageToPlayer;
+    public float DamageToPlayer { get { return damageToPlayer; } }
+
+    private SphereCollider sphereCollider;
 
     private void Start()
     {

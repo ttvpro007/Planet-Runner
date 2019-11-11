@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: e86c599eb0b9c514883216b58de4768c, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 1798848195}
   - component: {fileID: 1798848194}
   m_Layer: 0
-  m_Name: PlanetPopulator
+  m_Name: Planet Populator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,19 +347,21 @@ MonoBehaviour:
   - {fileID: 1637367218074080, guid: 137f558c1bba3e04799245a29343c643, type: 3}
   - {fileID: 1601759664563310, guid: 6543f6bdae1d3034282916a49bf914e2, type: 3}
   - {fileID: 1301707148344532, guid: a022b4832fd930b4697e8dc355dd1252, type: 3}
-  houseCount: 0
+  houseCount: 20
   treePrefabs:
   - {fileID: 1921170663168204, guid: 50c45caf867327541b745511b911132f, type: 3}
   - {fileID: 1982044948078306, guid: a8ce426b994e5d44ab2ca29360aa5518, type: 3}
   - {fileID: 1700574814636690, guid: 6fd8a61ac6e8ca54190a14bbeb1ccf82, type: 3}
   - {fileID: 1111538641624216, guid: 2c778d9c9d70b42439c357ef8b7cb28b, type: 3}
-  treeCount: 0
+  treeCount: 100
   rockPrefabs:
-  - {fileID: 1391043265532728, guid: 0876d08b6ad38cf4fa749afbb448e749, type: 3}
-  - {fileID: 1799773386866840, guid: e4418579d498db641b738599aad7e3f4, type: 3}
-  - {fileID: 1956754829211704, guid: 0a51d4c9b1e24f94595c90184fbcde43, type: 3}
-  - {fileID: 1665385087809270, guid: f7b6ce475dad7c94ea940bbd517b61ea, type: 3}
-  rockCount: 0
+  - {fileID: 1927372005322154, guid: 00fe3f5d3ce313146a7664e28e734fbf, type: 3}
+  - {fileID: 1828138642645558, guid: 956464851fff80346b81aa68b8256a2d, type: 3}
+  rockCount: 200
+  grassPrefabs:
+  - {fileID: 1435467742513656, guid: ecacec7031ff09045bf691bf5feb2b58, type: 3}
+  - {fileID: 1081485305171292, guid: 580632ba97e51e040b2b1717aa1ee906, type: 3}
+  grassCount: 1000
   spawnOnLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -513,129 +515,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292122, guid: dea25ca6f61d2b74391005f709f34919,
+    - target: {fileID: 408462552615208825, guid: dea25ca6f61d2b74391005f709f34919,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292122, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292122, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.38268343
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292122, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.92387956
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292122, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292121, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: treePrefabs.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: spawnVolume.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: spawnVolume.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: spawnVolume.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: spawnInterval
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: amountPerInterval
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: treePrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 1921170663168204, guid: 50c45caf867327541b745511b911132f,
-        type: 3}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: treePrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 1982044948078306, guid: a8ce426b994e5d44ab2ca29360aa5518,
-        type: 3}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: treePrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1700574814636690, guid: 6fd8a61ac6e8ca54190a14bbeb1ccf82,
-        type: 3}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: treePrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 1111538641624216, guid: 2c778d9c9d70b42439c357ef8b7cb28b,
-        type: 3}
-    - target: {fileID: 4774047200644292123, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: spawnTrees
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 334795256, guid: dea25ca6f61d2b74391005f709f34919, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.2588191
-      objectReference: {fileID: 0}
-    - target: {fileID: 334795256, guid: dea25ca6f61d2b74391005f709f34919, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9659258
-      objectReference: {fileID: 0}
-    - target: {fileID: 334795256, guid: dea25ca6f61d2b74391005f709f34919, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 334795256, guid: dea25ca6f61d2b74391005f709f34919, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 334795252, guid: dea25ca6f61d2b74391005f709f34919, type: 3}
-      propertyPath: m_TagString
-      value: MainCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 3676293441449226339, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: maxJumpForce
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3676293441449226339, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3676293441449226339, guid: dea25ca6f61d2b74391005f709f34919,
-        type: 3}
-      propertyPath: flyTimeLimiter
-      value: 5
+      propertyPath: maxHealth
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dea25ca6f61d2b74391005f709f34919, type: 3}

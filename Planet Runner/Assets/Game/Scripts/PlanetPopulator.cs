@@ -8,6 +8,8 @@ public class PlanetPopulator : MonoBehaviour
     [SerializeField] int treeCount = 0;
     [SerializeField] GameObject[] rockPrefabs;
     [SerializeField] int rockCount = 0;
+    [SerializeField] GameObject[] grassPrefabs;
+    [SerializeField] int grassCount = 0;
     [SerializeField] LayerMask spawnOnLayer;
 
     private GravityAttractor attractor;
@@ -16,7 +18,7 @@ public class PlanetPopulator : MonoBehaviour
 
     Vector3 raycastOrigin = Vector3.zero;
     private float raycastRadius;
-    private float raycastRadiusOffset = 5f;
+    private float raycastRadiusOffset = 10f;
     private float raycastRadiusMultiplier = 5;
     private float planetRadius;
 
@@ -31,6 +33,7 @@ public class PlanetPopulator : MonoBehaviour
         SpawnStuff(housePrefabs, houseCount);
         SpawnStuff(treePrefabs, treeCount);
         SpawnStuff(rockPrefabs, rockCount);
+        SpawnStuff(grassPrefabs, grassCount);
     }
 
     private void SpawnStuff(GameObject[] prefabs, int amount)
@@ -38,8 +41,8 @@ public class PlanetPopulator : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             body = Instantiate(prefabs[Random.Range(0, prefabs.Length)], GetSpawnPosition(), Quaternion.identity).GetComponent<GravityBody>();
+            body.transform.rotation = GetQuaternion(body, body.GetComponent<PlanetObject>().ModelVectorUp);
             body.Static = true;
-            AlignBodyRotationToPlanetNormal(body);
         }
     }
 
@@ -62,9 +65,9 @@ public class PlanetPopulator : MonoBehaviour
 
         return hit.point;
     }
-    
-    private void AlignBodyRotationToPlanetNormal(GravityBody body)
+
+    private Quaternion GetQuaternion(GravityBody body, Vector3 up)
     {
-        body.transform.rotation = Quaternion.FromToRotation(transform.up, raycastOrigin - transform.position) * body.transform.rotation;
+        return Quaternion.FromToRotation(up, raycastOrigin - transform.position) * body.transform.rotation;
     }
 }
