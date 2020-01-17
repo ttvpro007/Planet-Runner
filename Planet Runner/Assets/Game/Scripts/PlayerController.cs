@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Health health;
+    SoundManager soundManager = SoundManager.instance;
 
     private void Start()
     {
-        health = PlayerData.health;
+        health = PlayerData.healthComp;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Debris")
         {
             health.TakeDamage(other.GetComponent<Debris>().DamageToPlayer);
+            soundManager.Play("Impact Hit");
         }
     }
 }

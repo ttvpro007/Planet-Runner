@@ -14,7 +14,7 @@ public class PlayerAnimation : MonoBehaviour
     private void Start()
     {
         animator = transform.GetComponentInChildren<Animator>();
-        playerMovement = PlayerData.playerMovement;
+        playerMovement = PlayerData.playerMovementComp;
     }
 
     private void Update()

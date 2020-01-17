@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Example : MonoBehaviour
+namespace ViTiet.Examples
 {
-    public LayerMask mask;
-    public bool invertMask;
-
-    void Update()
+    public class Example : MonoBehaviour
     {
-        LayerMask newMask = ~(invertMask ? ~mask.value : mask.value);
+        public LayerMask mask;
+        public bool invertMask;
 
-        RaycastHit hitInfo;
-        bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, newMask);
-        if (hit) Debug.Log("Hit!");
+        void Update()
+        {
+            LayerMask newMask = ~(invertMask ? ~mask.value : mask.value);
+
+            RaycastHit hitInfo;
+            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, 50, newMask);
+            if (hit) Debug.Log("Hit!");
+        }
     }
 }

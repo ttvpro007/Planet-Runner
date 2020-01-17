@@ -14,6 +14,7 @@ public class AsteroidSpawner : MonoBehaviour
 
     private GravityAttractor attractor;
     private PlanetController planet;
+    GameObject asteroidVarian;
 
     private float time = Mathf.Infinity;
 
@@ -52,6 +53,8 @@ public class AsteroidSpawner : MonoBehaviour
         float scalar;
         Vector3 randomPosition;
 
+        int randomIndex = 0;
+
         for (int i = 0; i < amount; i++)
         {
             if (!isFollowingPlayer)
@@ -64,8 +67,10 @@ public class AsteroidSpawner : MonoBehaviour
                 randomPosition = RandomExtended.RandomInCube(transform, spawnVolume);
             }
             
-            Instantiate(asteroidPrefab, randomPosition, Quaternion.identity);
-            
+            GameObject asteroid = Instantiate(asteroidPrefab, randomPosition, Quaternion.identity);
+
+            randomIndex = Random.Range(0, asteroidPrefab.transform.childCount);
+            asteroid.transform.GetChild(randomIndex).gameObject.SetActive(true);
         }
     }
 
