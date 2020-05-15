@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other) return;
+
         if (other.gameObject.tag == "Debris")
         {
             health.TakeDamage(other.GetComponent<Debris>().DamageToPlayer);
