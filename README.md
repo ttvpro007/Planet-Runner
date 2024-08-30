@@ -13,7 +13,6 @@
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
 
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <a href="https://github.com/ttvpro007/Planet-Runner/">
     <img src="Images/logo-cropped.png" alt="Logo" width="80" height="80">
@@ -29,29 +28,24 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<!-- ![Menu Scene][menu-scene-screenshot]
-![Run!][level1-1-screenshot]
-![I believe I can fly!!!][level1-2-screenshot]
-![Try again?][level1-3-screenshot] -->
-
 <table width="100%">
   <tr>
     <td width="50%" align="center">
-      <img src="Images/menu.jpg" alt="Menu Scene" style="width: 90%;"/>
+      <img src="Images/menu.jpg" alt="Menu Scene" style="width: 100%;"/>
       <p>Menu Scene</p>
     </td>
     <td width="50%" align="center">
-      <img src="Images/level1-1.jpg" alt="Run!" style="width: 90%;"/>
+      <img src="Images/level1-1.jpg" alt="Run!" style="width: 100%;"/>
       <p>Run!</p>
     </td>
   </tr>
   <tr>
     <td width="50%" align="center">
-      <img src="Images/level1-2.jpg" alt="I believe I can fly!!!" style="width: 90%;"/>
+      <img src="Images/level1-2.jpg" alt="I believe I can fly!!!" style="width: 100%;"/>
       <p>I believe I can fly!!!</p>
     </td>
     <td width="50%" align="center">
-      <img src="Images/level1-3.jpg" alt="Try again?" style="width: 90%;"/>
+      <img src="Images/level1-3.jpg" alt="Try again?" style="width: 100%;"/>
       <p>Try again?</p>
     </td>
   </tr>
