@@ -29,10 +29,33 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Menu Scene][menu-scene-screenshot]
+<!-- ![Menu Scene][menu-scene-screenshot]
 ![Run!][level1-1-screenshot]
 ![I believe I can fly!!!][level1-2-screenshot]
-![Try again?][level1-3-screenshot]
+![Try again?][level1-3-screenshot] -->
+
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+      <img src="Images/menu.jpg" alt="Menu Scene" style="width: 90%;"/>
+      <p>Menu Scene</p>
+    </td>
+    <td width="50%" align="center">
+      <img src="Images/level1-1.jpg" alt="Run!" style="width: 90%;"/>
+      <p>Run!</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="Images/level1-2.jpg" alt="I believe I can fly!!!" style="width: 90%;"/>
+      <p>I believe I can fly!!!</p>
+    </td>
+    <td width="50%" align="center">
+      <img src="Images/level1-3.jpg" alt="Try again?" style="width: 90%;"/>
+      <p>Try again?</p>
+    </td>
+  </tr>
+</table>
 
 **Purpose**: Showcase project from the third semester at Toronto Film School's video game development program.
 
