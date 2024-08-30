@@ -18,8 +18,13 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.tag == "Debris")
         {
-            health.TakeDamage(other.GetComponent<Debris>().DamageToPlayer);
-            soundManager.Play("Impact Hit");
+            Debris debris = other.GetComponent<Debris>();
+
+            if (debris != null)
+            {
+                health.TakeDamage(debris.DamageToPlayer);
+                soundManager.Play("Impact Hit");
+            }
         }
     }
 }
