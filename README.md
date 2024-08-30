@@ -18,7 +18,7 @@
   <h3 align="center">Plannet Runner</h3>
 
   <p align="center">
-    A ninja’s endless dash through raining asteroids—just another day in the dojo of space!
+    A ninja’s endless dash through raining asteroids - just another day in the dojo of space!
   </p>
 </div>
 
